@@ -1,0 +1,34 @@
+{
+  "name": "my-tts",
+  "version": "0.0.1",
+  "description": "Simple text to speech software, for those who don't speak good!",
+  "main": "index.js",
+  "dependencies": {
+    "@google-cloud/text-to-speech": "^2.2.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "http-errors": "^1.7.3",
+    "ip": "^1.1.5",
+    "jquery": "^3.4.1",
+    "mediaelement": "^4.2.14",
+    "morgan": "^1.9.1",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "google-tts",
+    "tts",
+    "google",
+    "cloud",
+    "javascript",
+    "nodejs"
+  ],
+  "author": "Chris Fryer",
+  "license": "GPL-3.0"
+}
