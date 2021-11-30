@@ -8,9 +8,11 @@ const ipadrr = ip.address() + ':' + port;
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
+const fs = require('fs');
 
 // external files
 var synthesizeText = require('./synthesizeText');
+//var soundFiles = require('./soundFiles');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,8 +27,20 @@ app.get('/', function(req, res) {
   var sounds = [
     { name: 'No.mp3', description: 'No' },
     { name: 'Yes.mp3', description: 'Yes' },
-    { name: 'Ok.mp3', description: 'Ok' }
-];
+    { name: 'Ok.mp3', description: 'Ok' }];
+  const directoryPath = path.join(__dirname, 'pub');
+  fs.readdir(directoryPath, function (err, files) {
+    //handling error
+    if (err) {
+        return console.log('Unable to scan directory: ' + err);
+    } 
+    //listing all files using forEach
+    files.forEach(function (file) {
+        // Do whatever you want to do with the file
+        if (file.substr(-3,3) == 'mp3')
+            console.log(file); 
+    });
+  });
   res.render('index', { ipadd : ipadrr, sounds : sounds });
 });
 

@@ -1,4 +1,4 @@
-//async function soundFiles() {
+async function soundFiles() {
     const path = require('path');
     const fs = require('fs');
     //joining path of directory 
@@ -16,6 +16,6 @@
                 console.log(file); 
         });
     });
-
-//}
-//module.exports = soundFiles;
+    
+}
+module.exports = soundFiles;

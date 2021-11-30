@@ -4,7 +4,7 @@
   "description": "Simple text to speech software, for those who don't speak good!",
   "main": "index.js",
   "dependencies": {
-    "@google-cloud/text-to-speech": "^2.2.0",
+    "@google-cloud/text-to-speech": "^3.3.1",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "http-errors": "^1.7.3",
@@ -16,7 +16,7 @@
     "socket.io-client": "^2.3.0"
   },
   "devDependencies": {
-    "eslint": "^6.8.0"
+    "eslint": "^8.3.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
