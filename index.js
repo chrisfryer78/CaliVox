@@ -24,10 +24,9 @@ app.use(express.static(path.join(__dirname, 'pub')));
 //app.disable('view cache');
 
 app.get('/', function(req, res) {
-  var sounds = [
-    { name: 'No.mp3', description: 'No' },
-    { name: 'Yes.mp3', description: 'Yes' },
-    { name: 'Ok.mp3', description: 'Ok' }];
+  var sounds = [];
+    
+  console.log(typeof sounds);
   const directoryPath = path.join(__dirname, 'pub');
   fs.readdir(directoryPath, function (err, files) {
     //handling error
@@ -37,11 +36,15 @@ app.get('/', function(req, res) {
     //listing all files using forEach
     files.forEach(function (file) {
         // Do whatever you want to do with the file
-        if (file.substr(-3,3) == 'mp3')
-            console.log(file); 
+        if (file.substr(-3,3) == 'mp3'){
+            //console.log(file); 
+            sounds.push(file);
+          }
     });
+    //sounds = [sounds];
+    console.log(sounds);
+    res.render('index', { ipadd : ipadrr, sounds : sounds });
   });
-  res.render('index', { ipadd : ipadrr, sounds : sounds });
 });
 
 app.get('/sound', function(req, res) {

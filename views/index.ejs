@@ -47,12 +47,12 @@
 				<p>Help</p>
 				<% var playidno = 0;sounds.forEach(function(sound) {playidno++; %>
 				<audio id='player<%= playidno %>'>
-					<source src="<%= sound.name %>" type="audio/mpeg">
+					<source src="<%= sound %>" type="audio/mpeg">
 					Your browser does not support the audio element.
 				</audio>
 				<div>
 					<button type="button" class="btn btn-primary" onclick="document.getElementById('player<%= playidno %>').play()">
-						<%= sound.description %>
+						<%= sound %>
 					</button>
 				</div>
 				<% }); %>
