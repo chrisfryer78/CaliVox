@@ -51,6 +51,17 @@ app.get('/sound', function(req, res) {
   res.render('sound', { ipadd : ipadrr });
 });
 
+app.get('/delete/:filename', function(req, res) {
+  const directoryPath = path.join(__dirname, 'pub');
+  var sound = req.params.filename;
+
+  //joining path of directory
+  var file_to_delete = directoryPath + "/" + sound;
+  fs.unlinkSync(file_to_delete);
+
+  res.render('delete', { ipadd : ipadrr, sound : sound, file_to_delete : file_to_delete });
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

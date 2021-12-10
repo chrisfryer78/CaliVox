@@ -18,10 +18,15 @@
 	<script src="javascripts/mediaelement-and-player.min.js"></script>
 	<script src="javascripts/socket.io.js"></script>
 	<script>
-	  var socket = io.connect('http://<%= ipadd %>');
-	  socket.on('connect', function (data) {
-		console.log(data);
-	  });
+		var socket = io.connect('http://<%= ipadd %>');
+		socket.on('connect', function (data) {
+			console.log(data);
+			$("#sound-text-btn").click(function () {
+				//alert("Text: " + $("#sound-text").val());
+				socket.emit('speech-text', { speechData: '' + $("#sound-text").val() + '' });
+			});
+		});
+
 	</script>
 </head>
 
@@ -32,35 +37,19 @@
 	</div>
 	<nav class="navbar navbar-expand-sm  bg-dark navbar-dark">
 		<ul class="navbar-nav">
-			<li class="nav-item active">
+			<li class="nav-item">
 				<a class="nav-link" href="/">Home</a>
 			</li>
-			<li class="nav-item">
+			<li class="nav-item active">
 				<a class="nav-link" href="/sound">Add Sound</a>
 			</li>
 		</ul>
 	</nav>
+<p>The sound <b><%= sound %></b> has been deleted.</p>
+
+<p>Full path: <%= file_to_delete %></p>
 
 	<div class="container">
-		<div class="row">
-			<div class="col-sm-3">
-				<p>Help</p>
-				<% var playidno = 0;sounds.forEach(function(sound) {playidno++; %>
-				<audio id='player<%= playidno %>'>
-					<source src="<%= sound %>" type="audio/mpeg">
-					Your browser does not support the audio element.
-				</audio>
-				<div>
-					<nobr><button type="button" class="btn btn-primary" onclick="document.getElementById('player<%= playidno %>').play()">
-						<%= sound %>
-					</button>   <a href='/delete/<%= sound %>'>DELETE</a></nobr><br /><br />
-				</div>
-				<% }); %>
-			</div>
-			<div class="col-sm-3">Convo</div>
-			<div class="col-sm-3">About Me</div>
-			<div class="col-sm-3">Information</div>
-		</div>
 		<p id="ip"><%= ipadd %></p>
 	</div>
 </body>
