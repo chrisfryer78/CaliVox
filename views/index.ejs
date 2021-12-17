@@ -51,16 +51,16 @@
 					Your browser does not support the audio element.
 				</audio>
 				<div>
-					<nobr><button type="button" class="btn btn-primary" onclick="document.getElementById('player<%= playidno %>').play()">
+					<p><nobr><button style="float: left;" data-inline="true" type="button" class="btn btn-primary" onclick="document.getElementById('player<%= playidno %>').play()">
 						<%= sound %>
 					</button>   
 
-<form action="/delete/<%= sound %>" method="GET" onsubmit="return confirm('Do you really want to delete the sound <%= sound %>?');">
-<input type="submit" name="submit" value="delete">
+<form style="float: left;" action="/delete/<%= sound %>" method="GET" onsubmit="return confirm('Do you really want to delete the sound <%= sound %>?');">
+&nbsp; <input type="submit" name="submit" value="delete" data-inline="true">
 </form>
 
 <!-- <a href='/delete/<%= sound %>'>DELETE</a> -->
-</nobr><br />
+</nobr></p><br clear="all" />
 				</div>
 				<% }); %>
 			</div>
