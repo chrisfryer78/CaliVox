@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>My TTS</title>
+	<title>CaliVox Text-to-Speech Sound Board</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -27,7 +27,7 @@
 
 <body>
 	<div class="container-fluid bg-primary text-white">
-		<h1>Chris's Text to Speech</h1>
+		<h1>CaliVox Text-to-Speech Sound Board</h1>
 		Web based TTS, using Google Cloud TTS<br /><br />
 	</div>
 	<nav class="navbar navbar-expand-sm  bg-dark navbar-dark">
@@ -51,9 +51,16 @@
 					Your browser does not support the audio element.
 				</audio>
 				<div>
-					<nobr><button type="button" class="btn btn-primary" onclick="document.getElementById('player<%= playidno %>').play()">
+					<p><nobr><button style="float: left;" data-inline="true" type="button" class="btn btn-primary" onclick="document.getElementById('player<%= playidno %>').play()">
 						<%= sound %>
-					</button>   <a href='/delete/<%= sound %>'>DELETE</a></nobr><br /><br />
+					</button>   
+
+<form style="float: left;" action="/delete/<%= sound %>" method="GET" onsubmit="return confirm('Do you really want to delete the sound <%= sound %>?');">
+&nbsp; <input type="submit" name="submit" value="delete" data-inline="true">
+</form>
+
+<!-- <a href='/delete/<%= sound %>'>DELETE</a> -->
+</nobr></p><br clear="all" />
 				</div>
 				<% }); %>
 			</div>
