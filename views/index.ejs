@@ -53,7 +53,14 @@
 				<div>
 					<nobr><button type="button" class="btn btn-primary" onclick="document.getElementById('player<%= playidno %>').play()">
 						<%= sound %>
-					</button>   <a href='/delete/<%= sound %>'>DELETE</a></nobr><br /><br />
+					</button>   
+
+<form action="/delete/<%= sound %>" method="GET" onsubmit="return confirm('Do you really want to delete the sound <%= sound %>?');">
+<input type="submit" name="submit" value="delete">
+</form>
+
+<!-- <a href='/delete/<%= sound %>'>DELETE</a> -->
+</nobr><br />
 				</div>
 				<% }); %>
 			</div>
